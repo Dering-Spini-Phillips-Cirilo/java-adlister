@@ -34,7 +34,7 @@
             <div>
                 <h2>User Information</h2>
                     <div>
-                        <P>{users.username}</P>
+                        <p>${currentUser.username}</p>
                     </div>
             </div>
 
@@ -42,11 +42,12 @@
             <div class="card">
                 <h2>Item Description</h2>
                     <div>
-                        <p>${ad.title}</p>
+                        <p>${currentAd.title}</p>
                     </div>
                     <div>
-                        <p>${ad.description}</p>
+                        <p>${currentAd.description}</p>
                     </div>
+                <a href="/ads/update?adId=${currentAd.id}">Edit This Ad</a>
             </div>
     </body>
 </html>
