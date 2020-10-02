@@ -12,6 +12,7 @@ public class MySQLCategoriesDao extends MySQLDao implements Categories {
         super(config);
     }
 
+    // Returns a list of all categories in the database
     @Override
     public List<Category> getAllCategories() {
         PreparedStatement stmt = null;
@@ -24,6 +25,7 @@ public class MySQLCategoriesDao extends MySQLDao implements Categories {
         }
     }
 
+    // Wil return a specific category by the id entered
     @Override
     public Category getCategoryById(long id) {
         PreparedStatement stmt = null;
@@ -39,6 +41,7 @@ public class MySQLCategoriesDao extends MySQLDao implements Categories {
         }
     }
 
+    // Creates and returns a new category for the result set that comes in
     private Category extractCategory(ResultSet rs) throws SQLException {
         return new Category(
                 rs.getString("name"),
@@ -46,6 +49,7 @@ public class MySQLCategoriesDao extends MySQLDao implements Categories {
         );
     }
 
+    // Loops through a result set and calls extractCategory to turn each set into a Category object
     private List<Category> createCategoriesFromResults(ResultSet rs) throws SQLException {
         List<Category> categories = new ArrayList<>();
         while (rs.next()) {

@@ -10,7 +10,7 @@ public class MySQLUsersDao extends MySQLDao implements Users {
         super(config);
     }
 
-
+    // Will return a User object from a user name that's entered
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -23,6 +23,7 @@ public class MySQLUsersDao extends MySQLDao implements Users {
         }
     }
 
+    // Will return a User object from an email name that's entered
     @Override
     public User findByEmail(String email) {
         String query = "SELECT * FROM users WHERE email = ? LIMIT 1";
@@ -35,6 +36,7 @@ public class MySQLUsersDao extends MySQLDao implements Users {
         }
     }
 
+    // Will return a User object by the id entered
     @Override
     public User findById(long id) {
         String query = "SELECT * FROM users WHERE id = ? LIMIT 1";
@@ -47,6 +49,7 @@ public class MySQLUsersDao extends MySQLDao implements Users {
         }
     }
 
+    // Inserts a user into the database
     @Override
     public Long insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
@@ -65,6 +68,7 @@ public class MySQLUsersDao extends MySQLDao implements Users {
         }
     }
 
+    // Extracts a user from the RS
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;

@@ -15,6 +15,7 @@ public class MySQLAdsCategoriesDao extends MySQLDao implements AdsCategories {
         super(config);
     }
 
+    // This will take an Ad id and a category Id and put them into the Ads_categories database together
     @Override
     public long joinAdsToCategories (long adId, long catId) {
         try {
@@ -29,6 +30,7 @@ public class MySQLAdsCategoriesDao extends MySQLDao implements AdsCategories {
         }
     }
 
+    // Returns a list of all categories associated with the adId that is passed in
     @Override
     public List<Category> getCategoriesByAdId(long adId) {
         try {
@@ -47,10 +49,12 @@ public class MySQLAdsCategoriesDao extends MySQLDao implements AdsCategories {
         return null;
     }
 
+    // returns a Category object from a category Id
     private Category extractCategory(ResultSet rs) throws SQLException {
         return DaoFactory.getCategoriesDao().getCategoryById(rs.getLong("category_id"));
     }
 
+    // Loops through a ResultSet and creates a category for each set
     private List<Category> createCategoriesFromResults(ResultSet rs) throws SQLException {
         List<Category> categories = new ArrayList<>();
         while (rs.next()) {

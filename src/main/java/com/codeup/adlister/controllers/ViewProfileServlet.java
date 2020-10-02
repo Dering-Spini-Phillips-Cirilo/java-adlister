@@ -23,6 +23,7 @@ public class ViewProfileServlet extends HttpServlet {
             return;
         }
 
+        // grabs all ads then loops through them and will separate them if the ad is create by the current user.
         User user = (User) request.getSession().getAttribute("user");
         List<Ad> allAds = DaoFactory.getAdsDao().all();
         List<Ad> bucket = new ArrayList<>();
