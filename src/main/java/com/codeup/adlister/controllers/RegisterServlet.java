@@ -35,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
         if (!validInput) {
             ArrayList<String> errorMessages = Validate.getErrorMessages(errorList);
             // Display error messages in jsp partial
-
+            request.getSession().setAttribute("errorMessages", errorMessages);
             request.getSession().setAttribute("username",username);
             request.getSession().setAttribute("email",email);
             if(!errorList.get("nameAvailable"))
