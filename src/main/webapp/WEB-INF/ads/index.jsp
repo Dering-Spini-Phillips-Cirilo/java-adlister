@@ -81,19 +81,7 @@
                 </div>
             </c:forEach>
         </div>
-    <%--            <!-- Trigger/Open The Modal -->--%>
-    <%--            <button id="myBtn">Edit Ad</button>--%>
-    <%--            <!-- The Modal -->--%>
-    <%--            <div id="myModal" class="modal">--%>
 
-    <%--                <!-- Modal content -->--%>
-    <%--                <div class="modal-content">--%>
-    <%--                    <span class="close">&times;</span>--%>
-    <%--                    <h2>${ad.title}</h2>--%>
-    <%--                    <p>${ad.description}</p>--%>
-    <%--                </div>--%>
-
-    <%--            </div>--%>
     </body>
     <script type="text/javascript">
         document.getElementById("ad-card").onclick = function () {
