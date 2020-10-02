@@ -6,6 +6,8 @@ import com.codeup.adlister.models.User;
 import java.util.*;
 
 public class Validate {
+
+    // Uses a hash map to keep track of all the validation errors for the register form
     public static HashMap<String, Boolean> getErrorList(String name, String email, String password, String checkPassword) {
         HashMap<String, Boolean> errorList = new HashMap<>();
         errorList.put("nameNotEmpty", !name.isEmpty());
@@ -18,6 +20,7 @@ public class Validate {
         return errorList;
     }
 
+    // Uses a hash map to keep track of all the validation errors for the create ad form
     public static HashMap<String, Boolean> getErrorList(String title, String description) {
         HashMap<String, Boolean> errorList = new HashMap<>();
         errorList.put("titleNotEmpty", !title.isEmpty());
@@ -25,6 +28,7 @@ public class Validate {
         return errorList;
     }
 
+    // Checks each error of an error list and adds an appropriate error message to an ArrayList and returns that
     public static ArrayList<String> getErrorMessages(HashMap<String, Boolean> errorList) {
         ArrayList<String> errorMessages = new ArrayList<>();
         if(!errorList.get("nameNotEmpty")) {
@@ -55,6 +59,7 @@ public class Validate {
         return errorMessages;
     }
 
+    // This will loop through the hash map and return either True if everything is OK or False if any one thing is an error
     public static boolean checkForErrors(HashMap<String, Boolean> errorList) {
         int total = 1;
         for (Map.Entry<String, Boolean> stringBooleanEntry : errorList.entrySet()) {
@@ -69,11 +74,13 @@ public class Validate {
         return length >= min && length <= max;
     }
 
+    // Checks if the user associated with a username exists
     public static boolean username(String username) {
         User user = DaoFactory.getUsersDao().findByUsername(username);
         return Objects.isNull(user);
     }
 
+    // checks if an email is currently in use
     public static boolean email(String email) {
         User user = DaoFactory.getUsersDao().findByEmail(email);
         return Objects.isNull(user);

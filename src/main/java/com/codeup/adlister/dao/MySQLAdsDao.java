@@ -12,7 +12,7 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
         super(config);
     }
 
-
+    // Returns a list of all the ads in the database
     @Override
     public List<Ad> all() {
         PreparedStatement stmt = null;
@@ -24,6 +24,8 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
             throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
+
+    // Returns a single ad by the ID passed in
     @Override
     public List<Ad> getAdById(long adId) {
         PreparedStatement stmt = null;
@@ -37,7 +39,7 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
         }
     }
 
-
+    // Inserts a new ad into the database
     @Override
     public Long insert(Ad ad) {
         try {
@@ -55,6 +57,7 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
         }
     }
 
+    // Returns an Ad object from the set passed in
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
                 rs.getLong("id"),
@@ -65,6 +68,7 @@ public class MySQLAdsDao extends MySQLDao implements Ads {
         );
     }
 
+    // Loops through a result set and returns a list of Ads, extracting an Ad from each set using extractAd
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {

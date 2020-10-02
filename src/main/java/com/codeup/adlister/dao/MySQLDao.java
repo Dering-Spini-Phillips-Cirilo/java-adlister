@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class MySQLDao {
     protected Connection connection = null;
 
+    // The super class of all other Daos so the code below doesn't reapeat in them.
     public MySQLDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
