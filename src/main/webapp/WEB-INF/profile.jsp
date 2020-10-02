@@ -39,10 +39,5 @@
             </div>
         </div>
     </c:forEach>
-<%--</c:if>--%>
-
-
->>>>>>> master
-
     </body>
 </html>

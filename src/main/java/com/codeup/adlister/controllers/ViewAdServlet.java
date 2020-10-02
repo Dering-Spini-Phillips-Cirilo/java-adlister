@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +18,8 @@ public class ViewAdServlet extends HttpServlet {
         long adId = Long.parseLong(request.getParameter("adId"));
         List<Ad> listAd = DaoFactory.getAdsDao().getAdById(adId);
         Ad currentAd = listAd.get(0);
-        request.setAttribute("ad", currentAd);
+        request.getSession().setAttribute("currentAd", currentAd);
+        request.getSession().setAttribute("currentUser", DaoFactory.getUsersDao().findById(currentAd.getUserId()));
         request.getRequestDispatcher("/WEB-INF/ads/view.jsp").forward(request, response);
     }
 }

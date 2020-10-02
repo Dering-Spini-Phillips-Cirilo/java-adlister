@@ -70,6 +70,11 @@ public class Ad {
     }
 
     public void setCategories(ArrayList<Category> categories) {
+        System.out.println(this.getTitle());
+        for(Category category : categories) {
+            System.out.println(category.getName());
+        }
+        System.out.println("-------------------");
         this.categories = categories;
     }
 }
