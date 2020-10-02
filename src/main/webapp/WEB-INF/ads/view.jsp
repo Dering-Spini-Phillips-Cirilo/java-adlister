@@ -47,7 +47,9 @@
                     <div>
                         <p>${currentAd.description}</p>
                     </div>
-                <a href="/ads/update?adId=${currentAd.id}">Edit This Ad</a>
+                <c:if test="${user.id == currentAd.userId }">
+                    <a href="/ads/update?adId=${currentAd.id}">Edit This Ad</a>
+                </c:if>
             </div>
     </body>
 </html>
